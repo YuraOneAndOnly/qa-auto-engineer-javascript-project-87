@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Calculating differences between files",
-  "main": "index.js",
+  "main": "gendiff.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/YuraOneAndOnly/qa-auto-engineer-javascript-project-87#readme",
   "dependencies": {
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "jschardet": "^3.1.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
