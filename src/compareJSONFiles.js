@@ -19,6 +19,7 @@ export default function compareJSONFiles(rawPathToFile1, rawPathToFile2) {
     if (a[0] > b[0]) return 1;
     return 0;
   });
+
   sumArray.forEach((element) => {
     if (!existingInBothFiles.includes(element.toString())) {
       if (Object.hasOwn(json1, element[0]) && Object.hasOwn(json2, element[0])) {
