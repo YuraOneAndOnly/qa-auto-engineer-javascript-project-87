@@ -1,0 +1,22 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Calculating differences between files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/YuraOneAndOnly/qa-auto-engineer-javascript-project-87.git"
+  },
+  "author": "YuraOneAndOnly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuraOneAndOnly/qa-auto-engineer-javascript-project-87/issues"
+  },
+  "homepage": "https://github.com/YuraOneAndOnly/qa-auto-engineer-javascript-project-87#readme",
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}
