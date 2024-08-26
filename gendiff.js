@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import compareFiles from './src/compareFiles.js';
+import compareJSONFiles from './src/compareJSONFiles.js';
 
 const program = new Command();
 program
@@ -8,5 +8,5 @@ program
   .description('Compares two configuration files and shows a difference.')
   .option('-V, --version', 'output the version number')
   .option('-f, --format <type>', 'output format');
-  program.action(compareFiles)
+  program.action(compareJSONFiles)
   program.parse();
