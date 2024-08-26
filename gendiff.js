@@ -1,5 +1,5 @@
-//import { Command } from 'commander'
-const { Command } = require('commander');
+import { Command } from 'commander';
+
 const program = new Command();
 program
   .description('Compares two configuration files and shows a difference.')
