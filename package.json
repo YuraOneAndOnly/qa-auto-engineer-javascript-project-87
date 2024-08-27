@@ -2,10 +2,13 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Calculating differences between files",
-  "main": "gendiff.js",
+  "main": "/bin/gendiff.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "gendiff": "bin/gendiff.js"
   },
   "repository": {
     "type": "git",
