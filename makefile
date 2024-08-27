@@ -5,4 +5,4 @@ publish:
 gendiff:
 	node gendiff.js
 lint:
-	npx eslint
+	npx eslint .
