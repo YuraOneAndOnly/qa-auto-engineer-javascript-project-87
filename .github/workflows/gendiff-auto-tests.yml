@@ -14,8 +14,8 @@ jobs:
           node-version: '>=20'
           cache: npm
       - name: installinng dependencies
-        uses: make install
+        run: make install
       - name: auto tests
-        uses: make test
+        run: make test
       - name: linting
-        uses: make lint
+        run: make lint
