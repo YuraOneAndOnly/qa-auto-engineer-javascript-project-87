@@ -21,8 +21,7 @@ jobs:
         run: make lint
       - name: running an app
         run: 
-          npm link
-          gendiff ./__fixtures__/compareJSONFiles/file1.json ./__fixtures__/compareJSONFiles/file2.json
+          npm link && gendiff ./__fixtures__/compareJSONFiles/file1.json ./__fixtures__/compareJSONFiles/file2.json
       - name: test and publish code coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:
