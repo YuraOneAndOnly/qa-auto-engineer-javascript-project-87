@@ -2,7 +2,7 @@
 name: gendiff-auto-tests
 on: push
 jobs:
-  build:
+  job-1:
     runs-on: ubuntu-latest
     steps: 
       - name: clone repo
@@ -17,6 +17,4 @@ jobs:
       - name: auto tests
         uses: make test
       - name: linting
-        uses: make lint 
-      - name: running
-        uses: gendiff ./file1.json ./file2.json  
+        uses: make lint
