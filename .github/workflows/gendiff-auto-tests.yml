@@ -19,6 +19,8 @@ jobs:
         run: make test
       - name: linting
         run: make lint
+      - name: running an app
+        run: gendiff ./__fixtures__/compareJSONFiles/file1.json ./__fixtures__/compareJSONFiles/file2.json
       - name: test and publish code coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:
