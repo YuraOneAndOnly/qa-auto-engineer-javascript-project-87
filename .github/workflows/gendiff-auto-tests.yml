@@ -1,6 +1,7 @@
-# file: .github/workflows/gendiff-auto-tests.yml
 name: gendiff-auto-tests
+
 on: push
+
 jobs:
   job-1:
     runs-on: ubuntu-latest
@@ -10,7 +11,7 @@ jobs:
       - name: install node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '>=20'
+          node-version: '>=18'
           cache: npm
       - name: installinng dependencies
         uses: make install
