@@ -1,5 +1,5 @@
-import { readFileSync } from 'node:fs';
-import jschardet from 'jschardet'
+import { readFileSync } from "node:fs";
+import jschardet from "jschardet";
 
 export default function importFile(pathToFile) {
   try {
@@ -8,7 +8,7 @@ export default function importFile(pathToFile) {
     const fileContent = readFileSync(pathToFile, detectedEncoding.encoding);
     return fileContent;
   } catch (err) {
-    console.log('Error!');
+    console.log("Error!");
     console.log(err);
   }
 }

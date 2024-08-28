@@ -1,5 +1,5 @@
 export default function twoFilesToOneArray(json1, json2) {
-  let sumArray = [];
+  const sumArray = [];
   Object.entries(json1).map((pair) => sumArray.push(pair));
   Object.entries(json2).map((pair) => sumArray.push(pair));
   sumArray.sort((a, b) => {

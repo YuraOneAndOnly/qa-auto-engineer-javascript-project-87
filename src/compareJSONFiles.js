@@ -1,6 +1,6 @@
-import path from 'node:path';
-import importFile from '../src/importFile.js';
-import compareTwoFlatJSON from "../src/compareTwoFlatJSON.js";
+import path from "node:path";
+import importFile from "./importFile.js";
+import compareTwoFlatJSON from "./compareTwoFlatJSON.js";
 
 export default function compareJSONFiles(rawPathToFile1, rawPathToFile2) {
   const fileContent1 = importFile(path.resolve(rawPathToFile1));
@@ -9,5 +9,5 @@ export default function compareJSONFiles(rawPathToFile1, rawPathToFile2) {
   const json2 = JSON.parse(fileContent2);
   const result = compareTwoFlatJSON(json1, json2);
   console.log(result);
-  return result
+  return result;
 }
