@@ -19,3 +19,11 @@ jobs:
         run: make test
       - name: linting
         run: make lint
+      - name: test and publish code coverage
+        uses: paambaati/codeclimate-action@v9.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        with:
+          coverageCommand: make test_coverage
+          debug: true
+          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
