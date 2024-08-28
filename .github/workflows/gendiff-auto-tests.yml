@@ -1,0 +1,22 @@
+# file: .github/workflows/gendiff-auto-tests.yml
+name: gendiff-auto-tests
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: clone repo
+        uses: actions/checkout@main
+      - name: install node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '>=20'
+          cache: npm
+      - name: installinng dependencies
+        uses: make install
+      - name: auto tests
+        uses: make test
+      - name: linting
+        uses: make lint 
+      - name: running
+        uses: gendiff ./file1.json ./file2.json  
