@@ -16,13 +16,9 @@ test('import JSON file with correct path', () => {
 });
 
 test('import JSON file with incorrect path and without extension', () => {
-  const result = importFile('/incorrect/path');
-  console.log(result);
-  expect(result).toMatch('');
+  expect(importFile('/incorrect/path')).toMatch('');
 });
 
 test('import JSON file with incorrect path but with supported extension', () => {
-  const result = importFile('/incorrect/path.json');
-  console.log(result);
-  expect(result).toMatch('');
+  expect(importFile('D://////TEST/PATH/FFFF.json')).toMatch('');
 });
