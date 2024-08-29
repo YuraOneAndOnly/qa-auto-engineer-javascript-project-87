@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { readFileSync } from 'node:fs';
 import jschardet from 'jschardet';
 import compareJSONFiles from '../src/compareJSONFiles.js';

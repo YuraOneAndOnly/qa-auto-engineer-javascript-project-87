@@ -7,6 +7,6 @@ publish:
 lint:
 	npx eslint .
 test:
-	node --experimental-vm-modules node_modules/jest/bin/jest.js --colors
+	node --experimental-vm-modules node_modules/jest/bin/jest.js --colors --verbose
 test_coverage:
-	node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage  --colors
+	node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --verbose  --colors
