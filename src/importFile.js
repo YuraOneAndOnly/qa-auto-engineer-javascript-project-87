@@ -8,7 +8,7 @@ export default function importFile(rawPathToFile) {
   const pathToFile = path.resolve(rawPathToFile.trim());
   const dotIndex = pathToFile.lastIndexOf('.');
   const fileExtension = pathToFile.slice(dotIndex, pathToFile.length);
-  if (supportedFormats.includes(fileExtension)) {
+  if (supportedFormats.includes(fileExtension.toLowerCase())) {
     try {
       const fileHexContent = readFileSync(pathToFile);
       const detectedEncoding = jschardet.detect(fileHexContent);
