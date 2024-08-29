@@ -4,14 +4,14 @@ import importFile from '../src/importFile.js';
 
 test('import JSON file with correct path', () => {
   const fileHexContent = readFileSync(
-    '__fixtures__/compareJSONFiles/importFileTests/correctJSONImport.json',
+    '__fixtures__/importFileTests/correctJSONImport.json',
   );
   const detectedEncoding = jschardet.detect(fileHexContent);
   const referenceResult = readFileSync(
-    '__fixtures__/compareJSONFiles/importFileTests/correctJSONImport.json',
+    '__fixtures__/importFileTests/correctJSONImport.json',
     detectedEncoding.encoding,
   );
-  const result = importFile('__fixtures__/compareJSONFiles/file1.json');
+  const result = importFile('__fixtures__/exampleJSONFiles/file1.json');
   expect(result).toMatchObject(JSON.parse(referenceResult));
 });
 

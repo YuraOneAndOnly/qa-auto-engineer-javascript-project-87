@@ -10,8 +10,8 @@ test('two flat JSON files in order 1 > 2', () => {
     detectedEncoding.encoding,
   ).trim();
   const result = compareJSONFiles(
-    '__fixtures__/compareJSONFiles/file1.json',
-    '__fixtures__/compareJSONFiles/file2.json',
+    '__fixtures__/exampleJSONFiles/file1.json',
+    '__fixtures__/exampleJSONFiles/file2.json',
   ).trim();
   expect(result).toMatch(referenceResult);
 });
