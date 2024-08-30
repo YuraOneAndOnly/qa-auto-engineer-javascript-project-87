@@ -5,13 +5,23 @@ import yaml from 'js-yaml';
 
 const supportedFormats = ['.json', '.yaml', '.yml'];
 
-function importJSONFile(pathToFile) {
+function importFileWithEncoding(pathToFile) {
   try {
     const fileHexContent = readFileSync(pathToFile);
     const detectedEncoding = jschardet.detect(fileHexContent);
     const fileContent = readFileSync(pathToFile, detectedEncoding.encoding);
-    const json = JSON.parse(fileContent);
-    return json;
+    return fileContent;
+  } catch (err) {
+    console.log('\nError!\n');
+    console.log(err.message, '\n');
+    return ''; // if any error occured during file import - return empty string
+  }
+}
+
+function importJSONFile(pathToFile) {
+  try {
+    const fileContent = importFileWithEncoding(pathToFile);
+    return JSON.parse(fileContent);
   } catch (err) {
     console.log('\nError!\n');
     console.log(err.message, '\n');
@@ -21,11 +31,13 @@ function importJSONFile(pathToFile) {
 
 function importYAMLFile(pathToFile) {
   try {
-    const fileHexContent = readFileSync(pathToFile);
-    const detectedEncoding = jschardet.detect(fileHexContent);
-    const fileContent = readFileSync(pathToFile, detectedEncoding.encoding);
-    const json = yaml.load(fileContent);
-    return json;
+    const fileContent = importFileWithEncoding(pathToFile);
+    const yamlConvertedToJson = yaml.load(fileContent);
+    if (typeof yamlConvertedToJson === 'undefined') {
+      // as yaml.load cant throw error by itself, i made this by my own
+      throw new Error('Unexpected end of YAML input');
+    }
+    return yamlConvertedToJson;
   } catch (err) {
     console.log('\nError!\n');
     console.log(err.message, '\n');
@@ -33,18 +45,18 @@ function importYAMLFile(pathToFile) {
   }
 }
 
+function incorrectFormatError() {
+  console.log('\nWarning!\n');
+  console.log("You haven't specified the file format or the file of this format is not supported.");
+  console.log(`List of supported formats: ${supportedFormats}\n`);
+  return '';
+}
+
 export default function importFile(rawPathToFile) {
   const pathToFile = path.resolve(rawPathToFile.trim());
   const fileExtension = path.extname(pathToFile);
   let result;
   if (supportedFormats.includes(fileExtension.toLowerCase())) {
-    /*
-    if (fileExtension.toLowerCase() === '.json') {
-      result = importJSONFile(pathToFile);
-    } else if (fileExtension.toLowerCase() === '.yaml' || fileExtension.toLowerCase() === '.yml') {
-      result = importYAMLFile(pathToFile);
-    }
-    */
     switch (fileExtension.toLowerCase()) {
       case '.yaml': {
         result = importYAMLFile(pathToFile);
@@ -61,12 +73,7 @@ export default function importFile(rawPathToFile) {
       }
     }
   } else {
-    console.log('\nWarning!\n');
-    console.log(
-      "You haven't specified the file format or the file of this format is not supported.",
-    );
-    console.log(`List of supported formats: ${supportedFormats}\n`);
-    result = '';
+    result = incorrectFormatError();
   }
   return result;
 }
