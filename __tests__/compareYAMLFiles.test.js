@@ -1,6 +1,5 @@
-import { readFileSync } from 'node:fs';
-import jschardet from 'jschardet';
 import compareFiles from '../src/compareFiles.js';
+import importExampleFile from '../src/testFunctions/importExampleFile.js';
 
 const resultOfComparePath = '__fixtures__/compareYAMLFiles/resultOfCompare.txt';
 const yaml1FilePath = '__fixtures__/exampleYAMLFiles/file1.yaml';
@@ -10,9 +9,7 @@ const yml2FilePath = '__fixtures__/exampleYAMLFiles/file2.yml';
 let referenceResult;
 
 beforeAll(() => {
-  const fileHexContent = readFileSync(resultOfComparePath);
-  const detectedEncoding = jschardet.detect(fileHexContent);
-  referenceResult = readFileSync(resultOfComparePath, detectedEncoding.encoding).trim();
+  referenceResult = importExampleFile(resultOfComparePath);
 });
 
 test('two flat YAML files (.yaml)', () => {
