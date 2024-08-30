@@ -10,3 +10,5 @@ To install, please, clone repository with 'git clone' and run 'make install' ins
 To use, run 'gendiff \<pathToFile1\> \<pathToFile2\>'
 
 Example of comparing 2 flat JSON files https://asciinema.org/a/4mdwQus5vEfj2Prly2lP0fSNg
+
+Example of comparing 2 flat YAML files https://asciinema.org/a/J4O3JhZziGzJ04YYoYOkvzOgT
