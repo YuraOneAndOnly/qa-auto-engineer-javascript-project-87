@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import compareFiles from '../src/compareFiles.js';
+import gendiff from '../src/gendiff.js';
 
 const program = new Command();
 program
@@ -9,6 +9,6 @@ program
   .argument('<filepath2>')
   .description('Compares two configuration files and shows a difference.')
   .option('-V, --version', 'output the version number')
-  .option('-f, --format <type>', 'output format');
-program.action(compareFiles);
+  .option('-f, --format <type>', 'output format', 'json');
+program.action(gendiff);
 program.parse();

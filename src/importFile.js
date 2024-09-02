@@ -67,7 +67,7 @@ export default function importFile(rawPathToFile) {
         break;
       }
       default: {
-        // meant to be .json format
+        // meant to be .json format as default
         result = importJSONFile(pathToFile);
         break;
       }
