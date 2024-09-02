@@ -2,13 +2,13 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Calculating differences between files",
-  "main": "src/gendiff.js",
+  "main": "./bin/index.js",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --colors"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "bin": {
-    "gendiff": "src/gendiff.js"
+    "gendiff": "../index.js"
   },
   "repository": {
     "type": "git",

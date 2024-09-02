@@ -1,11 +1,8 @@
-// #!/usr/bin/env node
+#!/usr/bin/env node
 
-// import { Command } from 'commander';
-import gendiff from '../src/gendiff.js';
+import { Command } from 'commander';
+import gendiff from './bin/index.js';
 
-export default (rawPathToFile1, rawPathToFile2, formatRawName = 'json') => gendiff(rawPathToFile1, rawPathToFile2, formatRawName);
-
-/*
 const program = new Command();
 program
   .argument('<filepath1>')
@@ -15,4 +12,3 @@ program
   .option('-f, --format <type>', 'output format', 'json');
 program.action(gendiff);
 program.parse();
-*/

@@ -1,4 +1,4 @@
-import gendiff from '../src/gendiff.js';
+import gendiff from '../bin/index.js';
 import importExampleFile from '../src/testFunctions/importExampleFile.js';
 
 const JSONOutputResultPath = '__fixtures__/comparisonResult/JSONOutput.txt';
