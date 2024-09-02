@@ -8,6 +8,10 @@ To install, please, clone repository with 'git clone' and run 'make install' ins
 
 To use, run 'gendiff \<pathToFile1\> \<pathToFile2\>'
 
-Example of comparing 2 flat JSON files https://asciinema.org/a/4mdwQus5vEfj2Prly2lP0fSNg
+You can choose output format with option -f (--format). Availiable formats: json, plain. Example gendiff --format plain file1.json file2.json 
 
-Example of comparing 2 flat YAML files https://asciinema.org/a/J4O3JhZziGzJ04YYoYOkvzOgT
+Example of comparing 2 flat JSON files: https://asciinema.org/a/4mdwQus5vEfj2Prly2lP0fSNg
+
+Example of comparing 2 flat YAML files: https://asciinema.org/a/J4O3JhZziGzJ04YYoYOkvzOgT
+
+Example of comparing files with diffetent output formats: https://asciinema.org/a/gP3JdUKZo0zEPCtqaAkELim9B
