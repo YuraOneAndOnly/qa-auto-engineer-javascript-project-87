@@ -4,8 +4,8 @@
     "node": true,
     "jest/globals": true
   },
-  "extends": ["airbnb-base"],
-  "plugins": ["jest"],
+  "extends": ["airbnb-base", "plugin:fp/recommended"],
+  "plugins": ["jest", "fp"],
   "parserOptions": {
     "ecmaVersion": 15,
     "sourceType": "module"
@@ -13,6 +13,10 @@
   "rules": {
     "no-console": "off",
     "import/extensions": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "import/no-unresolved": "off",
+    "fp/no-unused-expression": "off",
+    "fp/no-nil": "off",
+    "fp/no-throw": "off"
   }
 }
