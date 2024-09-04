@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import gendiff from './bin/index.js';
+import genDiff from './bin/index.js';
 
 const program = new Command();
 program
@@ -10,5 +10,5 @@ program
   .description('Compares two configuration files and shows a difference.')
   .option('-V, --version', 'output the version number')
   .option('-f, --format <type>', 'output format', 'json');
-program.action(gendiff);
+program.action(genDiff);
 program.parse();

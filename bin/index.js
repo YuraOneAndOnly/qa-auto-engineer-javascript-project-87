@@ -1,9 +1,9 @@
 // #!/usr/bin/env node
 
 // import { Command } from 'commander';
-import gendiff from '../src/gendiff.js';
+import genDiff from '../src/genDiff.js';
 
-export default (rawPathToFile1, rawPathToFile2, formatRawName = 'stylish') => gendiff(rawPathToFile1, rawPathToFile2, formatRawName);
+export default (rawPathToFile1, rawPathToFile2, formatRawName = 'stylish') => genDiff(rawPathToFile1, rawPathToFile2, formatRawName);
 
 /*
 const program = new Command();

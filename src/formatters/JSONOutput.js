@@ -19,5 +19,5 @@ export default function JSONOutput(json1, json2) {
       }
     }
   });
-  return result;
+  return JSON.stringify(result);
 }

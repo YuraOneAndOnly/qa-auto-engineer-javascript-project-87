@@ -1,7 +1,7 @@
 import importFile from './importFile.js';
 import compareFiles from './formatters/index.js';
 
-export default function gendiff(rawPathToFile1, rawPathToFile2, formatRawName) {
+export default function genDiff(rawPathToFile1, rawPathToFile2, formatRawName) {
   let formatName;
   if (typeof formatRawName !== 'string') {
     formatName = formatRawName.format;

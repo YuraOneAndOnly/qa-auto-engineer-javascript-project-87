@@ -1,4 +1,4 @@
-import gendiff from '../bin/index.js';
+import genDiff from '../bin/index.js';
 import importExampleFile from '../src/testFunctions/importExampleFile.js';
 import JSONReferenceResult from '../__fixtures__/comparisonResult/JSONOutput.json';
 
@@ -15,47 +15,47 @@ beforeAll(() => {
 });
 
 test('two flat JSON files (output format - default (stylish))', () => {
-  const result = gendiff(json1FilePath, json2FilePath);
+  const result = genDiff(json1FilePath, json2FilePath);
   expect(result).toMatch(stylishReferenceResult);
 });
 
 test('two flat JSON files (output format - stylish)', () => {
-  const result = gendiff(json1FilePath, json2FilePath, 'stylish');
+  const result = genDiff(json1FilePath, json2FilePath, 'stylish');
   expect(result).toMatch(stylishReferenceResult);
 });
 
 test('two flat JSON files (output format - plain)', () => {
-  const result = gendiff(json1FilePath, json2FilePath, 'plain');
+  const result = genDiff(json1FilePath, json2FilePath, 'plain');
   expect(result).toMatch(plainReferenceResult);
 });
 
 test('two flat JSON files (output format - JSON)', () => {
-  const result = gendiff(json1FilePath, json2FilePath, 'JSON');
+  const result = genDiff(json1FilePath, json2FilePath, 'JSON');
   expect(result).toMatchObject(JSONReferenceResult);
 });
 
 test('two flat JSON files (output format - stylish, but like object from commander-js)', () => {
-  const result = gendiff(json1FilePath, json2FilePath, { format: 'stylish' });
+  const result = genDiff(json1FilePath, json2FilePath, { format: 'stylish' });
   expect(result).toMatch(stylishReferenceResult);
 });
 
 test('two flat JSON files (output format - plain, but like object from commander-js)', () => {
-  const result = gendiff(json1FilePath, json2FilePath, { format: 'plain' });
+  const result = genDiff(json1FilePath, json2FilePath, { format: 'plain' });
   expect(result).toMatch(plainReferenceResult);
 });
 
 test('two flat JSON files (output format - JSON, but like object from commander-js)', () => {
-  const result = gendiff(json1FilePath, json2FilePath, { format: 'JSON' });
+  const result = genDiff(json1FilePath, json2FilePath, { format: 'JSON' });
   expect(result).toMatchObject(JSONReferenceResult);
 });
 
 test('incorrect output format', () => {
-  expect(gendiff(json1FilePath, json2FilePath, 'asdq')).toMatch(
+  expect(genDiff(json1FilePath, json2FilePath, 'asdq')).toMatch(
     /Incorrect output format, list of available output formats: .*/,
   );
 });
 
 test('incorrect output format like object from commander-js options', () => {
-  const result = gendiff(json1FilePath, json2FilePath, { format: 'asdf' });
+  const result = genDiff(json1FilePath, json2FilePath, { format: 'asdf' });
   expect(result).toMatch(/Incorrect output format, list of available output formats: .*/);
 });

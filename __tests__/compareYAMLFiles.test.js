@@ -1,4 +1,4 @@
-import gendiff from '../bin/index.js';
+import genDiff from '../bin/index.js';
 import importExampleFile from '../src/testFunctions/importExampleFile.js';
 import JSONReferenceResult from '../__fixtures__/comparisonResult/JSONOutput.json';
 
@@ -17,66 +17,66 @@ beforeAll(() => {
 });
 
 test('two flat YAML files (.yaml) (output format - default (stylish))', () => {
-  const result = gendiff(yaml1FilePath, yaml2FilePath);
+  const result = genDiff(yaml1FilePath, yaml2FilePath);
   expect(result).toMatch(stylishReferenceResult);
 });
 
 test('two flat YAML files (.yml) (output format - default (stylish))', () => {
-  const result = gendiff(yml1FilePath, yml2FilePath);
+  const result = genDiff(yml1FilePath, yml2FilePath);
   expect(result).toMatch(stylishReferenceResult);
 });
 
 test('two flat YAML files (.yaml) (output format - stylish)', () => {
-  const result = gendiff(yaml1FilePath, yaml2FilePath, 'stylish');
+  const result = genDiff(yaml1FilePath, yaml2FilePath, 'stylish');
   expect(result).toMatch(stylishReferenceResult);
 });
 
 test('two flat YAML files (.yml) (output format - stylish)', () => {
-  const result = gendiff(yml1FilePath, yml2FilePath, 'stylish');
+  const result = genDiff(yml1FilePath, yml2FilePath, 'stylish');
   expect(result).toMatch(stylishReferenceResult);
 });
 
 test('two flat YAML files (.yaml) (output format - plain)', () => {
-  const result = gendiff(yaml1FilePath, yaml2FilePath, 'plain');
+  const result = genDiff(yaml1FilePath, yaml2FilePath, 'plain');
   expect(result).toMatch(plainReferenceResult);
 });
 
 test('two flat YAML files (.yml) (output format - plain)', () => {
-  const result = gendiff(yml1FilePath, yml2FilePath, 'plain');
+  const result = genDiff(yml1FilePath, yml2FilePath, 'plain');
   expect(result).toMatch(plainReferenceResult);
 });
 
 test('two flat YAML files (.yaml) (output format - JSON)', () => {
-  const result = gendiff(yaml1FilePath, yaml2FilePath, 'JSON');
+  const result = genDiff(yaml1FilePath, yaml2FilePath, 'JSON');
   expect(result).toMatchObject(JSONReferenceResult);
 });
 
 test('two flat YAML files (.yml) (output format - JSON)', () => {
-  const result = gendiff(yml1FilePath, yml2FilePath, 'JSON');
+  const result = genDiff(yml1FilePath, yml2FilePath, 'JSON');
   expect(result).toMatchObject(JSONReferenceResult);
 });
 
 test('two flat YAML files (.yml) (output format - stylish, but like object from commander-js)', () => {
-  const result = gendiff(yml1FilePath, yml2FilePath, { format: 'stylish' });
+  const result = genDiff(yml1FilePath, yml2FilePath, { format: 'stylish' });
   expect(result).toMatch(stylishReferenceResult);
 });
 
 test('two flat YAML files (.yml) (output format - plain, but like object from commander-js)', () => {
-  const result = gendiff(yml1FilePath, yml2FilePath, { format: 'plain' });
+  const result = genDiff(yml1FilePath, yml2FilePath, { format: 'plain' });
   expect(result).toMatch(plainReferenceResult);
 });
 
 test('two flat YAML files (.yml) (output format - JSON, but like object from commander-js)', () => {
-  const result = gendiff(yml1FilePath, yml2FilePath, { format: 'JSON' });
+  const result = genDiff(yml1FilePath, yml2FilePath, { format: 'JSON' });
   expect(result).toMatchObject(JSONReferenceResult);
 });
 
 test('incorrect output format', () => {
-  const result = gendiff(yml1FilePath, yml2FilePath, 'asdf');
+  const result = genDiff(yml1FilePath, yml2FilePath, 'asdf');
   expect(result).toMatch(/Incorrect output format, list of available output formats: .*/);
 });
 
 test('incorrect output format like object from commander-js options', () => {
-  const result = gendiff(yml1FilePath, yml2FilePath, { format: 'asdf' });
+  const result = genDiff(yml1FilePath, yml2FilePath, { format: 'asdf' });
   expect(result).toMatch(/Incorrect output format, list of available output formats: .*/);
 });
