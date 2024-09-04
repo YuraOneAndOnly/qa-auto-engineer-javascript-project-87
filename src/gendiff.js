@@ -2,17 +2,17 @@ import importFile from './importFile.js';
 import compareFiles from './formatters/index.js';
 
 export default function genDiff(rawPathToFile1, rawPathToFile2, formatRawName) {
-  let formatName;
+  const formatName = {};
   if (typeof formatRawName !== 'string') {
-    formatName = formatRawName.format;
+    formatName.format = formatRawName.format;
   } else {
-    formatName = formatRawName;
+    formatName.format = formatRawName;
   }
   const fileContent1 = importFile(rawPathToFile1);
   const fileContent2 = importFile(rawPathToFile2);
-  let result;
+  const result = {};
   try {
-    result = compareFiles(fileContent1, fileContent2, formatName);
+    result.output = compareFiles(fileContent1, fileContent2, formatName.format);
   } catch (err) {
     console.log('\nError!\n');
     console.log(err.message, '\n');
@@ -20,5 +20,5 @@ export default function genDiff(rawPathToFile1, rawPathToFile2, formatRawName) {
   }
   console.log(''); // added one empty line to console output
   console.log(result, '\n');
-  return result;
+  return result.output;
 }

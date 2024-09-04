@@ -5,25 +5,25 @@ const pathToExampleOfImport = '__fixtures__/importFileTests/correctJSONImport.js
 const jsonFilePath = '__fixtures__/exampleJSONFiles/file1.json';
 const yamlFilePath = '__fixtures__/exampleYAMLFiles/file1.yaml';
 const ymlFilePath = '__fixtures__/exampleYAMLFiles/file1.yml';
-let referenceResult;
+const referenceResult = {};
 
 beforeAll(() => {
-  referenceResult = importExampleFile(pathToExampleOfImport);
+  referenceResult.example = importExampleFile(pathToExampleOfImport);
 });
 
 test('import JSON file with correct path', () => {
   const result = importFile(jsonFilePath);
-  expect(result).toMatchObject(JSON.parse(referenceResult));
+  expect(result).toMatchObject(JSON.parse(referenceResult.example));
 });
 
 test('import YAML (.yaml) file with correct path', () => {
   const result = importFile(yamlFilePath);
-  expect(result).toMatchObject(JSON.parse(referenceResult));
+  expect(result).toMatchObject(JSON.parse(referenceResult.example));
 });
 
 test('import YAML (.yml) file with correct path', () => {
   const result = importFile(ymlFilePath);
-  expect(result).toMatchObject(JSON.parse(referenceResult));
+  expect(result).toMatchObject(JSON.parse(referenceResult.example));
 });
 
 test('import JSON file with incorrect path and without extension', () => {
