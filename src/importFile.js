@@ -55,25 +55,20 @@ function incorrectFormatError() {
 export default function importFile(rawPathToFile) {
   const pathToFile = path.resolve(rawPathToFile.trim());
   const fileExtension = path.extname(pathToFile);
-  const result = {};
   if (supportedFormats.includes(fileExtension.toLowerCase())) {
     switch (fileExtension.toLowerCase()) {
       case '.yaml': {
-        result.output = importYAMLFile(pathToFile);
-        break;
+        return importYAMLFile(pathToFile);
       }
       case '.yml': {
-        result.output = importYAMLFile(pathToFile);
-        break;
+        return importYAMLFile(pathToFile);
       }
       default: {
         // meant to be .json format as default
-        result.output = importJSONFile(pathToFile);
-        break;
+        return importJSONFile(pathToFile);
       }
     }
   } else {
-    result.output = incorrectFormatError();
+    return incorrectFormatError();
   }
-  return result.output;
 }
