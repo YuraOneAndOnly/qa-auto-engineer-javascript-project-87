@@ -2,22 +2,22 @@ import twoFilesIntoOneArray from '../twoFilesIntoOneArray.js';
 
 export default function JSONOutput(json1, json2) {
   const existingInBothFiles = [];
-  const result = ['{'];
+  const result = {};
   const sumArray = twoFilesIntoOneArray(json1, json2);
   sumArray.forEach((element) => {
+    const [key, value] = element;
     if (!existingInBothFiles.includes(element.toString())) {
-      if (Object.hasOwn(json1, element[0]) && Object.values(json1).includes(element[1])) {
-        if (Object.values(json2).includes(element[1])) {
-          result.push(`    ${element[0]}: ${element[1]}`);
+      if (Object.hasOwn(json1, key) && Object.values(json1).includes(value)) {
+        if (Object.values(json2).includes(value)) {
+          result[key] = value;
         } else {
-          result.push(`  - ${element[0]}: ${element[1]}`);
+          result[key] = value;
         }
         existingInBothFiles.push(element.toString());
       } else {
-        result.push(`  + ${element[0]}: ${element[1]}`);
+        result[key] = value;
       }
     }
   });
-  result.push('}');
-  return result.join('\n');
+  return result;
 }
