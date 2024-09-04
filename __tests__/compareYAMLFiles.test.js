@@ -48,12 +48,14 @@ test('two flat YAML files (.yml) (output format - plain)', () => {
 
 test('two flat YAML files (.yaml) (output format - JSON)', () => {
   const result = genDiff(yaml1FilePath, yaml2FilePath, 'JSON');
-  expect(result).toMatchObject(JSONReferenceResult);
+  // expect(result).toMatchObject(JSONReferenceResult);
+  expect(result).toMatch(JSON.stringify(JSONReferenceResult));
 });
 
 test('two flat YAML files (.yml) (output format - JSON)', () => {
   const result = genDiff(yml1FilePath, yml2FilePath, 'JSON');
-  expect(result).toMatchObject(JSONReferenceResult);
+  // expect(result).toMatchObject(JSONReferenceResult);
+  expect(result).toMatch(JSON.stringify(JSONReferenceResult));
 });
 
 test('two flat YAML files (.yml) (output format - stylish, but like object from commander-js)', () => {
@@ -68,7 +70,8 @@ test('two flat YAML files (.yml) (output format - plain, but like object from co
 
 test('two flat YAML files (.yml) (output format - JSON, but like object from commander-js)', () => {
   const result = genDiff(yml1FilePath, yml2FilePath, { format: 'JSON' });
-  expect(result).toMatchObject(JSONReferenceResult);
+  // expect(result).toMatchObject(JSONReferenceResult);
+  expect(result).toMatch(JSON.stringify(JSONReferenceResult));
 });
 
 test('incorrect output format', () => {

@@ -31,7 +31,8 @@ test('two flat JSON files (output format - plain)', () => {
 
 test('two flat JSON files (output format - JSON)', () => {
   const result = genDiff(json1FilePath, json2FilePath, 'JSON');
-  expect(result).toMatchObject(JSONReferenceResult);
+  // expect(result).toMatchObject(JSONReferenceResult);
+  expect(result).toMatch(JSON.stringify(JSONReferenceResult));
 });
 
 test('two flat JSON files (output format - stylish, but like object from commander-js)', () => {
@@ -46,7 +47,8 @@ test('two flat JSON files (output format - plain, but like object from commander
 
 test('two flat JSON files (output format - JSON, but like object from commander-js)', () => {
   const result = genDiff(json1FilePath, json2FilePath, { format: 'JSON' });
-  expect(result).toMatchObject(JSONReferenceResult);
+  // expect(result).toMatchObject(JSONReferenceResult);
+  expect(result).toMatch(JSON.stringify(JSONReferenceResult));
 });
 
 test('incorrect output format', () => {
