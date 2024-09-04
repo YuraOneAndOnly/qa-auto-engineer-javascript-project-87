@@ -1,7 +1,7 @@
-import JSONOutput from './JSONOutput.js';
+import stylishOutput from './stylishOutput.js';
 import plainOutput from './plainOutput.js';
 
-const availableFormats = ['json', 'plain'];
+const availableFormats = ['stylish', 'plain'];
 
 export default function compareFiles(json1, json2, formatName) {
   let result;
@@ -12,8 +12,8 @@ export default function compareFiles(json1, json2, formatName) {
         break;
       }
       default: {
-        // meant to be JSON-like output format as default
-        result = JSONOutput(json1, json2);
+        // meant to be stylish-like output format as default
+        result = stylishOutput(json1, json2);
         break;
       }
     }

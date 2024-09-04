@@ -3,7 +3,7 @@
 // import { Command } from 'commander';
 import gendiff from '../src/gendiff.js';
 
-export default (rawPathToFile1, rawPathToFile2, formatRawName = 'json') => gendiff(rawPathToFile1, rawPathToFile2, formatRawName);
+export default (rawPathToFile1, rawPathToFile2, formatRawName = 'stylish') => gendiff(rawPathToFile1, rawPathToFile2, formatRawName);
 
 /*
 const program = new Command();
@@ -12,7 +12,7 @@ program
   .argument('<filepath2>')
   .description('Compares two configuration files and shows a difference.')
   .option('-V, --version', 'output the version number')
-  .option('-f, --format <type>', 'output format', 'json');
+  .option('-f, --format <type>', 'output format', 'stylish');
 program.action(gendiff);
 program.parse();
 */
