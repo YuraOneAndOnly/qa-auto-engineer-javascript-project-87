@@ -19,6 +19,6 @@ export default function genDiff(rawPathToFile1, rawPathToFile2, formatRawName) {
     return err.message; // if any error occured during file import - return empty string
   }
   console.log(''); // added one empty line to console output
-  console.log(result, '\n');
+  console.log(result.output, '\n');
   return result.output;
 }
