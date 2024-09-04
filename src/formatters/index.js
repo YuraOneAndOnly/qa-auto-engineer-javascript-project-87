@@ -1,7 +1,8 @@
 import stylishOutput from './stylishOutput.js';
 import plainOutput from './plainOutput.js';
+import JSONOutput from './JSONOutput.js';
 
-const availableFormats = ['stylish', 'plain'];
+const availableFormats = ['stylish', 'plain', 'json'];
 
 export default function compareFiles(json1, json2, formatName) {
   let result;
@@ -9,6 +10,10 @@ export default function compareFiles(json1, json2, formatName) {
     switch (formatName.toLowerCase()) {
       case 'plain': {
         result = plainOutput(json1, json2);
+        break;
+      }
+      case 'json': {
+        result = JSONOutput(json1, json2);
         break;
       }
       default: {

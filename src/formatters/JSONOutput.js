@@ -1,6 +1,6 @@
 import twoFilesIntoOneArray from '../twoFilesIntoOneArray.js';
 
-export default function stylishOutput(json1, json2) {
+export default function JSONOutput(json1, json2) {
   const existingInBothFiles = [];
   const result = ['{'];
   const sumArray = twoFilesIntoOneArray(json1, json2);
