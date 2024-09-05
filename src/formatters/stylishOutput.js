@@ -1,23 +1,14 @@
-import twoFilesIntoOneArray from '../twoFilesIntoOneArray.js';
+import generateDifference from '../generateDifference.js';
 
-export default function stylishOutput(json1, json2) {
-  const existingInBothFiles = [];
-  const result = ['{'];
-  const sumArray = twoFilesIntoOneArray(json1, json2);
-  sumArray.forEach((element) => {
-    if (!existingInBothFiles.includes(element.toString())) {
-      if (Object.hasOwn(json1, element[0]) && Object.values(json1).includes(element[1])) {
-        if (Object.values(json2).includes(element[1])) {
-          result.push(`    ${element[0]}: ${element[1]}`);
-        } else {
-          result.push(`  - ${element[0]}: ${element[1]}`);
-        }
-        existingInBothFiles.push(element.toString());
-      } else {
-        result.push(`  + ${element[0]}: ${element[1]}`);
-      }
+export default function stylishOutput(obj1, obj2) {
+  const difference = generateDifference(obj1, obj2);
+  const result = difference.reduce((acc, checkedKey) => {
+    switch (checkedKey.type) {
+      case 'added': return [...acc, `  + ${checkedKey.key}: ${obj2[checkedKey.key]}`];
+      case 'deleted': return [...acc, `  - ${checkedKey.key}: ${obj1[checkedKey.key]}`];
+      case 'changed': return [...acc, `  - ${checkedKey.key}: ${obj1[checkedKey.key]}`, `  + ${checkedKey.key}: ${obj2[checkedKey.key]}`];
+      default: return [...acc, `    ${checkedKey.key}: ${obj1[checkedKey.key]}`]; // meant 'unchanged' to be default
     }
-  });
-  result.push('}');
-  return result.join('\n');
+  }, []);
+  return `{\n${result.join('\n')}\n}`;
 }

@@ -1,22 +1,24 @@
-import twoFilesIntoOneArray from '../twoFilesIntoOneArray.js';
+import generateDifference from '../generateDifference.js';
 
-export default function plainOutput(json1, json2) {
-  const result = [];
-  const existingInBothFiles = [];
-  const sumArray = twoFilesIntoOneArray(json1, json2);
-  sumArray.forEach((element) => {
-    if (Object.hasOwn(json1, element[0])) {
-      if (Object.hasOwn(json2, element[0]) && !existingInBothFiles.includes(element[0])) {
-        existingInBothFiles.push(element[0]);
-        if (JSON.stringify(json1[element[0]]) !== JSON.stringify(json2[element[0]])) {
-          result.push(`Property '${element[0]}' was updated. From ${json1[element[0]]} to ${json2[element[0]]}`);
-        }
-      } else if (!Object.hasOwn(json2, element[0])) {
-        result.push(`Property '${element[0]}' was removed`);
-      }
-    } else {
-      result.push(`Property '${element[0]}' was added with value: ${json2[element[0]]}`);
+export default function plainOutput(obj1, obj2) {
+  const difference = generateDifference(obj1, obj2);
+  const result = difference.reduce((acc, checkedKey) => {
+    switch (checkedKey.type) {
+      case 'added':
+        return [
+          ...acc,
+          `Property '${checkedKey.key}' was added with value: ${obj2[checkedKey.key]}`,
+        ];
+      case 'deleted':
+        return [...acc, `Property '${checkedKey.key}' was removed`];
+      case 'changed':
+        return [
+          ...acc,
+          `Property '${checkedKey.key}' was updated. From ${obj1[checkedKey.key]} to ${obj2[checkedKey.key]}`,
+        ];
+      default:
+        return acc; // meant 'unchanged' to be default
     }
-  });
+  }, []);
   return result.join('\n');
 }

@@ -4,26 +4,19 @@ import JSONOutput from './JSONOutput.js';
 
 const availableFormats = ['stylish', 'plain', 'json'];
 
-export default function compareFiles(json1, json2, formatName) {
-  const result = {};
+export default function compareFiles(obj1, obj2, formatName) {
   if (availableFormats.includes(formatName.toLowerCase())) {
     switch (formatName.toLowerCase()) {
-      case 'plain': {
-        result.output = plainOutput(json1, json2);
-        break;
-      }
-      case 'json': {
-        result.output = JSONOutput(json1, json2);
-        break;
-      }
-      default: {
-        // meant to be stylish-like output format as default
-        result.output = stylishOutput(json1, json2);
-        break;
-      }
+      case 'plain':
+        return plainOutput(obj1, obj2);
+      case 'json':
+        return JSONOutput(obj1, obj2);
+      default:
+        return stylishOutput(obj1, obj2); // meant to be stylish-like output format as default
     }
   } else {
-    throw new Error(`Incorrect output format, list of available output formats: ${availableFormats}`);
+    throw new Error(
+      `Incorrect output format, list of available output formats: ${availableFormats}`,
+    );
   }
-  return result.output;
 }

@@ -1,23 +1,20 @@
-import twoFilesIntoOneArray from '../twoFilesIntoOneArray.js';
+import generateDifference from '../generateDifference.js';
 
-export default function JSONOutput(json1, json2) {
-  const existingInBothFiles = [];
-  const result = {};
-  const sumArray = twoFilesIntoOneArray(json1, json2);
-  sumArray.forEach((element) => {
-    const [key, value] = element;
-    if (!existingInBothFiles.includes(element.toString())) {
-      if (Object.hasOwn(json1, key) && Object.values(json1).includes(value)) {
-        if (Object.values(json2).includes(value)) {
-          result[key] = value;
-        } else {
-          result[key] = value;
-        }
-        existingInBothFiles.push(element.toString());
-      } else {
-        result[key] = value;
-      }
+export default function JSONOutput(obj1, obj2) {
+  const difference = generateDifference(obj1, obj2);
+  const result = difference.reduce((acc, checkedKey) => {
+    const { key, type } = checkedKey;
+    switch (type) {
+      case 'added':
+        return { ...acc, ...{ [key]: obj2[key] } };
+      case 'deleted':
+        return { ...acc, ...{ [key]: obj1[key] } };
+      case 'changed':
+        return { ...acc, ...{ [key]: obj2[key] } };
+      default:
+        return { ...acc, ...{ [key]: obj1[key] } };
+      // meant 'unchanged' to be default
     }
-  });
-  return JSON.stringify(result);
+  }, []);
+  return result;
 }

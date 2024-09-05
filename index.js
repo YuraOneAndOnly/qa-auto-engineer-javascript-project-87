@@ -9,6 +9,6 @@ program
   .argument('<filepath2>')
   .description('Compares two configuration files and shows a difference.')
   .option('-V, --version', 'output the version number')
-  .option('-f, --format <type>', 'output format', 'json');
+  .option('-f, --format <type>', 'output format', 'stylish');
 program.action(genDiff);
 program.parse();
