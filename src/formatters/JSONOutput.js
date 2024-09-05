@@ -16,5 +16,5 @@ export default function JSONOutput(obj1, obj2) {
       // meant 'unchanged' to be default
     }
   }, []);
-  return result;
+  return JSON.stringify(result);
 }
