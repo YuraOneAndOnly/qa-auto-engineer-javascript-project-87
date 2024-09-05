@@ -8,7 +8,9 @@ To install, please, clone repository with 'git clone' and run 'make install' ins
 
 To use, run 'gendiff \<pathToFile1\> \<pathToFile2\>'
 
-You can choose output format with option -f (--format). Availiable formats: stylish, plain, json. Example gendiff --format plain file1.json file2.json 
+You can choose output format with option -f (--format). Availiable formats: stylish, plain, json. 
+
+Example: gendiff --format plain file1.json file2.json 
 
 Example of comparing 2 flat JSON files: https://asciinema.org/a/4mdwQus5vEfj2Prly2lP0fSNg
 
