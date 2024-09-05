@@ -17,3 +17,5 @@ Example of comparing 2 flat JSON files: https://asciinema.org/a/4mdwQus5vEfj2Prl
 Example of comparing 2 flat YAML files: https://asciinema.org/a/J4O3JhZziGzJ04YYoYOkvzOgT
 
 Example of comparing files with diffetent output formats: https://asciinema.org/a/X4mWVdzpkZ22CR2bSiRu84wim
+
+Example of output, formatted in JSON: https://asciinema.org/a/VLMRdjZgQDsU8nxlL55hfi8eN
