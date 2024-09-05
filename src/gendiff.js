@@ -12,8 +12,9 @@ export default function genDiff(rawPathToFile1, rawPathToFile2, formatRawName) {
   const fileContent2 = importFile(rawPathToFile2);
   try {
     console.log(''); // added one empty line to console output
-    console.log(compareFiles(fileContent1, fileContent2, formatName), '\n');
-    return compareFiles(fileContent1, fileContent2, formatName);
+    const result = compareFiles(fileContent1, fileContent2, formatName);
+    console.log(result, '\n');
+    return result;
   } catch (err) {
     console.log('\nError!\n');
     console.log(err.message, '\n');
